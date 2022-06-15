@@ -193,8 +193,9 @@ COPY requirements.txt /tmp/
 
 RUN pip install -r /tmp/requirements.txt
 
+# copiar pasta app inteira
 COPY flask-app.py /home/flask-app.py
 
-ENTRYPOINT FLASK_APP=/home/flask-app.py flask run --host=0.0.0.0
+RUN export FLASK_APP=/home/flask-app.py
 
-CMD ["python3"]
+CMD ["flask run --host=0.0.0.0"]
